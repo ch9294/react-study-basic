@@ -15,7 +15,6 @@ const ResponseCheck = () => {
             case "waiting":
                 setState('ready');
                 setMessage('초록색이 되면 클릭하세요');
-
                 timeout.current = setTimeout(() => {
                     setState('now');
                     setMessage('지금 클릭');
@@ -41,7 +40,7 @@ const ResponseCheck = () => {
     };
 
     const renderAverage = () => {
-        const responseTime = result.reduce((a, c) => a + c) / result.length;
+        const responseTime = result.length !== 0 ? result.reduce((a, c) => a + c) / result.length : null;
         return result.length !== 0 && <>
             <div>평균 시간: {responseTime}ms</div>
             <button onClick={onReset}>초기화</button>
